@@ -1,0 +1,20 @@
+from aiogram.fsm.state import StatesGroup, State
+
+
+class States (StatesGroup):
+    log_in = State()
+    admin_username = State()
+    admin_tg_id = State()
+    admin_nlSS_acc1 = State()
+    admin_nlTrojan_acc1 = State()
+    admin_finSS_acc1 = State()
+    admin_finTrojan_acc1 = State()
+    admin_nlSS_acc2 = State()
+    admin_nlTrojan_acc2 = State()
+    admin_finSS_acc2 = State()
+    admin_finTrojan_acc2 = State()
+    admin_nlSS_acc3 = State()
+    admin_nlTrojan_acc3 = State()
+    admin_finSS_acc3 = State()
+    admin_finTrojan_acc3 = State()
+    admin_notification = State()
