@@ -17,6 +17,7 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     username: Mapped[str | None] = mapped_column(String)
     tg_id = mapped_column(BigInteger)
+    last_seen: Mapped[str | None] = mapped_column(String)
     nlSS_acc1: Mapped[str | None] = mapped_column(String)
     nlTrojan_acc1: Mapped[str | None] = mapped_column(String)
     finSS_acc1: Mapped[str | None] = mapped_column(String)

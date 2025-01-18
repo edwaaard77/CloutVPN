@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import datetime
 from aiogram import Bot, types, F
 from aiogram import Dispatcher
 from aiogram.enums import ParseMode, ChatAction
@@ -7,17 +8,19 @@ from aiogram.client.bot import DefaultBotProperties
 from aiogram.filters import CommandStart
 from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
+from dotenv import load_dotenv
+import os
 
 from states.states import States
 from db.models import async_session
 from db.models import User
 from db.models import async_main
+import db.requests as rq
 from sqlalchemy import select, or_
 from keyboards.keyboards import (keyboard_main, keyboard_back, keyboard_devices, keyboard_devices_back)
 from files.files import nekobox_android, nekobox_windows
 from admin_handler import router as admin_router
-from dotenv import load_dotenv
-import os
+
 
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -67,7 +70,7 @@ async def logging_in(message: types.Message, state: FSMContext):
         if not user:
             await message.answer(text=f"Похоже вы до сих пор не приобрели подписку, либо я вас ещё не успел добавить в "
                                       f"систему...🧐\n\n"
-                                      f"Обратитесь за помощью к @clout_vpn ✍️")
+                                      f"Обратитесь за помощью к @clout_vpn docker ✍️")
         else:
             user.tg_id = tg_id
             await session.commit()
@@ -78,6 +81,10 @@ async def logging_in(message: types.Message, state: FSMContext):
 
 @dp.callback_query(F.data == "button_keys_pressed")
 async def process_button_keys_press(callback: CallbackQuery):
+    time_of_action = datetime.datetime.now()
+    last_seen_time = time_of_action.strftime("%Y-%m-%d %H:%M")
+    print(last_seen_time)
+    await rq.set_time(callback.from_user.id, last_seen_time)
     async with async_session() as session:
         user = await session.scalar(select(User).where(User.tg_id == callback.from_user.id))
         if not user.nlSS_acc3:
@@ -140,6 +147,10 @@ async def process_button_back_press(callback: CallbackQuery):
 
 @dp.callback_query(F.data == "button_instruction_pressed")
 async def process_button_instruction_press(callback: CallbackQuery):
+    time_of_action = datetime.datetime.now()
+    last_seen_time = time_of_action.strftime("%Y-%m-%d %H:%M")
+    print(last_seen_time)
+    await rq.set_time(callback.from_user.id, last_seen_time)
     await callback.message.edit_text(
         text=f"<b>Выберете устройство:</b>",
         reply_markup=keyboard_devices
@@ -149,6 +160,10 @@ async def process_button_instruction_press(callback: CallbackQuery):
 
 @dp.callback_query(F.data == "button_bonus_pressed")
 async def process_button_bonus_press(callback: CallbackQuery):
+    time_of_action = datetime.datetime.now()
+    last_seen_time = time_of_action.strftime("%Y-%m-%d %H:%M")
+    print(last_seen_time)
+    await rq.set_time(callback.from_user.id, last_seen_time)
     await callback.message.edit_text(
         text=f"На постоянной основе действует реферальная программа 🤝\n\n"
              f"Порекомендуйте своим близким мой сервис — они получат 7 дней бесплатного пробного периода, а вам добавлю "
@@ -165,6 +180,10 @@ async def process_button_devices_back_press(callback: CallbackQuery):
 
 @dp.callback_query(F.data == "button_android_pressed")
 async def process_button_android_press(callback: CallbackQuery):
+    time_of_action = datetime.datetime.now()
+    last_seen_time = time_of_action.strftime("%Y-%m-%d %H:%M")
+    print(last_seen_time)
+    await rq.set_time(callback.from_user.id, last_seen_time)
     await callback.message.bot.send_chat_action(
         chat_id=callback.message.chat.id,
         action=ChatAction.UPLOAD_DOCUMENT
@@ -185,6 +204,10 @@ async def process_button_android_press(callback: CallbackQuery):
 
 @dp.callback_query(F.data == "button_ios_pressed")
 async def process_button_ios_press(callback: CallbackQuery):
+    time_of_action = datetime.datetime.now()
+    last_seen_time = time_of_action.strftime("%Y-%m-%d %H:%M")
+    print(last_seen_time)
+    await rq.set_time(callback.from_user.id, last_seen_time)
     await callback.message.answer(
         text=f"<b>Инструкция для iPhone/iPad</b>\n\n"
              f"1. Установить приложение на мобильное устройство:\n\n"
@@ -200,6 +223,10 @@ async def process_button_ios_press(callback: CallbackQuery):
 
 @dp.callback_query(F.data == "button_mac_pressed")
 async def process_button_macos_press(callback: CallbackQuery):
+    time_of_action = datetime.datetime.now()
+    last_seen_time = time_of_action.strftime("%Y-%m-%d %H:%M")
+    print(last_seen_time)
+    await rq.set_time(callback.from_user.id, last_seen_time)
     await callback.message.answer(
         text=f"<b>Инструкция для MacOS</b>\n\n"
              f"1. Установить приложение на компьютер:\n\n"
@@ -216,6 +243,10 @@ async def process_button_macos_press(callback: CallbackQuery):
 
 @dp.callback_query(F.data == "button_windows_pressed")
 async def process_button_windows_press(callback: CallbackQuery):
+    time_of_action = datetime.datetime.now()
+    last_seen_time = time_of_action.strftime("%Y-%m-%d %H:%M")
+    print(last_seen_time)
+    await rq.set_time(callback.from_user.id, last_seen_time)
     await callback.message.bot.send_chat_action(
         chat_id=callback.message.chat.id,
         action=ChatAction.UPLOAD_DOCUMENT
@@ -236,7 +267,11 @@ async def process_button_windows_press(callback: CallbackQuery):
 
 
 @dp.callback_query(F.data == "button_others_pressed")
-async def process_button_windows_press(callback: CallbackQuery):
+async def process_button_others_press(callback: CallbackQuery):
+    time_of_action = datetime.datetime.now()
+    last_seen_time = time_of_action.strftime("%Y-%m-%d %H:%M")
+    print(last_seen_time)
+    await rq.set_time(callback.from_user.id, last_seen_time)
     await callback.message.answer(
         text=f"Для настройки VPN на роутере или телевизоре, напишите, пожалуйста, @clout_vpn ✍️",
         reply_markup=keyboard_devices_back
@@ -247,6 +282,10 @@ async def process_button_windows_press(callback: CallbackQuery):
 
 @dp.callback_query(F.data == "button_payment_pressed")
 async def process_button_payment_press(callback: CallbackQuery):
+    time_of_action = datetime.datetime.now()
+    last_seen_time = time_of_action.strftime("%Y-%m-%d %H:%M")
+    print(last_seen_time)
+    await rq.set_time(callback.from_user.id, last_seen_time)
     await callback.message.edit_text(
         text=f"<b>Тарифные планы:</b>\n\n"
              f"1 месяц — 99 рублей\n"
