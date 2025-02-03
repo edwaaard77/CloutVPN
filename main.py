@@ -113,11 +113,15 @@ async def process_button_keys_press(callback: CallbackQuery):
                          f"🇳🇱 Нидерланды (Trojan)\n\n🔑 <code>{user.nlTrojan_acc1}</code>\n\n"
                          f"🇫🇮 Финляндия (Shadowsocks)\n\n🔑 <code>{user.finSS_acc1}</code>\n\n"
                          f"🇫🇮 Финляндия (Trojan)\n\n🔑 <code>{user.finTrojan_acc1}</code>\n\n"
+                         f"🇷🇺 Россия (Shadowsocks)\n\n🔑 <code>{user.rusSS_acc1}</code>\n\n"
+                         f"🇷🇺 Россия (Trojan)\n\n🔑 <code>{user.rusTrojan_acc1}</code>\n\n"
                          f"<b>2-й аккаунт:</b>\n\n"
                          f"🇳🇱 Нидерланды (Shadowsocks)\n\n🔑 <code>{user.nlSS_acc2}</code>\n\n"
                          f"🇳🇱 Нидерланды (Trojan)\n\n🔑 <code>{user.nlTrojan_acc2}</code>\n\n"
                          f"🇫🇮 Финляндия (Shadowsocks)\n\n🔑 <code>{user.finSS_acc2}</code>\n\n"
                          f"🇫🇮 Финляндия (Trojan)\n\n🔑 <code>{user.finTrojan_acc2}</code>\n\n"
+                         f"🇷🇺 Россия (Shadowsocks)\n\n🔑 <code>{user.rusSS_acc2}</code>\n\n"
+                         f"🇷🇺 Россия (Trojan)\n\n🔑 <code>{user.rusTrojan_acc2}</code>\n\n"
                          f"* чтобы скопировать, просто нажмите на конкретный ключ.",
                     reply_markup=keyboard_back
                 )
@@ -128,16 +132,22 @@ async def process_button_keys_press(callback: CallbackQuery):
                      f"🇳🇱 Нидерланды (Trojan)\n\n🔑 <code>{user.nlTrojan_acc1}</code>\n\n"
                      f"🇫🇮 Финляндия (Shadowsocks)\n\n🔑 <code>{user.finSS_acc1}</code>\n\n"
                      f"🇫🇮 Финляндия (Trojan)\n\n🔑 <code>{user.finTrojan_acc1}</code>\n\n"
+                     f"🇷🇺 Россия (Shadowsocks)\n\n🔑 <code>{user.rusSS_acc1}</code>\n\n"
+                     f"🇷🇺 Россия (Trojan)\n\n🔑 <code>{user.rusTrojan_acc1}</code>\n\n"
                      f"<b>2-й аккаунт:</b>\n\n"
                      f"🇳🇱 Нидерланды (Shadowsocks)\n\n🔑 <code>{user.nlSS_acc2}</code>\n\n"
                      f"🇳🇱 Нидерланды (Trojan)\n\n🔑 <code>{user.nlTrojan_acc2}</code>\n\n"
                      f"🇫🇮 Финляндия (Shadowsocks)\n\n🔑 <code>{user.finSS_acc2}</code>\n\n"
                      f"🇫🇮 Финляндия (Trojan)\n\n🔑 <code>{user.finTrojan_acc2}</code>\n\n"
+                     f"🇷🇺 Россия (Shadowsocks)\n\n🔑 <code>{user.rusSS_acc2}</code>\n\n"
+                     f"🇷🇺 Россия (Trojan)\n\n🔑 <code>{user.rusTrojan_acc2}</code>\n\n"
                      f"<b>3-й аккаунт:</b>\n\n"
                      f"🇳🇱 Нидерланды (Shadowsocks)\n\n🔑 <code>{user.nlSS_acc3}</code>\n\n"
                      f"🇳🇱 Нидерланды (Trojan)\n\n🔑 <code>{user.nlTrojan_acc3}</code>\n\n"
                      f"🇫🇮 Финляндия (Shadowsocks)\n\n🔑 <code>{user.finSS_acc3}</code>\n\n"
                      f"🇫🇮 Финляндия (Trojan)\n\n🔑 <code>{user.finTrojan_acc3}</code>\n\n"
+                     f"🇷🇺 Россия (Shadowsocks)\n\n🔑 <code>{user.rusSS_acc3}</code>\n\n"
+                     f"🇷🇺 Россия (Trojan)\n\n🔑 <code>{user.rusTrojan_acc3}</code>\n\n"
                      f"* чтобы скопировать, просто нажмите на конкретный ключ.",
                 reply_markup=keyboard_back
             )
