@@ -58,7 +58,7 @@ async def logging_in(message: types.Message, state: FSMContext):
                 User.finSS_acc1 == key,
                 User.finTrojan_acc1 == key,
                 User.rusSS_acc1 == key,
-                User.rusTrojan_acc1,
+                User.rusTrojan_acc1 == key,
                 User.nlSS_acc2 == key,
                 User.nlTrojan_acc2 == key,
                 User.finSS_acc2 == key,
