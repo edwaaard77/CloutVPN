@@ -130,6 +130,40 @@ async def add_finTrojan_acc1(message: types.Message, state: FSMContext):
         user.finTrojan_acc1 = new_finTrojan_acc1
         await session.commit()
     await message.answer(text=f"finTrojan_acc1:\n\n<i>{new_finTrojan_acc1}</i>\n\n"
+                              f"Введите rusSS_acc1",
+                         reply_markup=keyboard_admin_skip
+                         )
+    await state.set_state(States.admin_rusSS_acc1)
+
+
+@router.message(F.text, States.admin_rusSS_acc1)
+async def add_rusSS_acc1(message: types.Message, state: FSMContext):
+    await state.get_state()
+    data = await state.get_data()
+    user_id = data.get("user_id")
+    new_rusSS_acc1 = message.text
+    async with async_session() as session:
+        user = await session.scalar(select(User).where(User.id == user_id))
+        user.rusSS_acc1 = new_rusSS_acc1
+        await session.commit()
+    await message.answer(text=f"rusSS_acc1:\n\n<i>{new_rusSS_acc1}</i>\n\n"
+                              f"Введите rusTrojan_acc1",
+                         reply_markup=keyboard_admin_skip
+                         )
+    await state.set_state(States.admin_rusTrojan_acc1)
+
+
+@router.message(F.text, States.admin_rusTrojan_acc1)
+async def add_rusTrojan_acc1(message: types.Message, state: FSMContext):
+    await state.get_state()
+    data = await state.get_data()
+    user_id = data.get("user_id")
+    new_rusTrojan_acc1 = message.text
+    async with async_session() as session:
+        user = await session.scalar(select(User).where(User.id == user_id))
+        user.rusTrojan_acc1 = new_rusTrojan_acc1
+        await session.commit()
+    await message.answer(text=f"rusTrojan_acc1:\n\n<i>{new_rusTrojan_acc1}</i>\n\n"
                               f"Введите nlSS_acc2",
                          reply_markup=keyboard_admin_skip
                          )
@@ -198,6 +232,40 @@ async def add_finTrojan_acc2(message: types.Message, state: FSMContext):
         user.finTrojan_acc2 = new_finTrojan_acc2
         await session.commit()
     await message.answer(text=f"finTrojan_acc2:\n\n<i>{new_finTrojan_acc2}</i>\n\n"
+                              f"Введите rusSS_acc2",
+                         reply_markup=keyboard_admin_skip
+                         )
+    await state.set_state(States.admin_rusSS_acc2)
+
+
+@router.message(F.text, States.admin_rusSS_acc2)
+async def add_rusSS_acc2(message: types.Message, state: FSMContext):
+    await state.get_state()
+    data = await state.get_data()
+    user_id = data.get("user_id")
+    new_rusSS_acc2 = message.text
+    async with async_session() as session:
+        user = await session.scalar(select(User).where(User.id == user_id))
+        user.rusSS_acc2 = new_rusSS_acc2
+        await session.commit()
+    await message.answer(text=f"rusSS_acc2:\n\n<i>{new_rusSS_acc2}</i>\n\n"
+                              f"Введите rusTrojan_acc2",
+                         reply_markup=keyboard_admin_skip
+                         )
+    await state.set_state(States.admin_rusTrojan_acc2)
+
+
+@router.message(F.text, States.admin_rusTrojan_acc2)
+async def add_rusTrojan_acc2(message: types.Message, state: FSMContext):
+    await state.get_state()
+    data = await state.get_data()
+    user_id = data.get("user_id")
+    new_rusTrojan_acc2 = message.text
+    async with async_session() as session:
+        user = await session.scalar(select(User).where(User.id == user_id))
+        user.rusTrojan_acc2 = new_rusTrojan_acc2
+        await session.commit()
+    await message.answer(text=f"rusTrojan_acc2:\n\n<i>{new_rusTrojan_acc2}</i>\n\n"
                               f"Введите nlSS_acc3",
                          reply_markup=keyboard_admin_skip
                          )
@@ -266,6 +334,39 @@ async def add_finTrojan_acc3(message: types.Message, state: FSMContext):
         user.finTrojan_acc3 = new_finTrojan_acc3
         await session.commit()
     await message.answer(text=f"finTrojan_acc3:\n\n<i>{new_finTrojan_acc3}</i>\n\n"
+                              f"Введите rusSS_acc3",
+                         reply_markup=keyboard_admin_skip
+                         )
+    await state.set_state(States.admin_rusSS_acc3)
+
+@router.message(F.text, States.admin_rusSS_acc3)
+async def add_rusSS_acc3(message: types.Message, state: FSMContext):
+    await state.get_state()
+    data = await state.get_data()
+    user_id = data.get("user_id")
+    new_rusSS_acc3 = message.text
+    async with async_session() as session:
+        user = await session.scalar(select(User).where(User.id == user_id))
+        user.rusSS_acc3 = new_rusSS_acc3
+        await session.commit()
+    await message.answer(text=f"rusSS_acc3:\n\n<i>{new_rusSS_acc3}</i>\n\n"
+                              f"Введите rusTrojan_acc3",
+                         reply_markup=keyboard_admin_skip
+                         )
+    await state.set_state(States.admin_rusTrojan_acc3)
+
+
+@router.message(F.text, States.admin_rusTrojan_acc3)
+async def add_rusTrojan_acc3(message: types.Message, state: FSMContext):
+    await state.get_state()
+    data = await state.get_data()
+    user_id = data.get("user_id")
+    new_rusTrojan_acc3 = message.text
+    async with async_session() as session:
+        user = await session.scalar(select(User).where(User.id == user_id))
+        user.rusTrojan_acc3 = new_rusTrojan_acc3
+        await session.commit()
+    await message.answer(text=f"rusTrojan_acc3:\n\n<i>{new_rusTrojan_acc3}</i>\n\n"
                               f"Пользователь добавлен\n\n"
                               f"{user.id}\n\n"
                               f"{user.username}\n\n"
@@ -274,14 +375,20 @@ async def add_finTrojan_acc3(message: types.Message, state: FSMContext):
                               f"{user.nlTrojan_acc1}\n\n"
                               f"{user.finSS_acc1}\n\n"
                               f"{user.finTrojan_acc1}\n\n"
+                              f"{user.rusSS_acc1}\n\n"
+                              f"{user.rusTrojan_acc1}\n\n"
                               f"{user.nlSS_acc2}\n\n"
                               f"{user.nlTrojan_acc2}\n\n"
                               f"{user.finSS_acc2}\n\n"
                               f"{user.finTrojan_acc2}\n\n"
+                              f"{user.rusSS_acc2}\n\n"
+                              f"{user.rusTrojan_acc2}\n\n"
                               f"{user.nlSS_acc3}\n\n"
                               f"{user.nlTrojan_acc3}\n\n"
                               f"{user.finSS_acc3}\n\n"
-                              f"{user.finTrojan_acc3}\n\n",
+                              f"{user.finTrojan_acc3}\n\n"
+                              f"{user.rusSS_acc3}\n\n"
+                              f"{user.rusTrojan_acc3}\n\n",
                          reply_markup=keyboard_admin_exit
                          )
 
@@ -313,6 +420,12 @@ async def process_button_admin_skip_press(callback: CallbackQuery, state: FSMCon
         await callback.message.answer("Введите finTrojan_acc1:", reply_markup=keyboard_admin_skip)
         await state.set_state(States.admin_finTrojan_acc1)
     elif current_state == States.admin_finTrojan_acc1:
+        await callback.message.answer("Введите rusSS_acc1:", reply_markup=keyboard_admin_skip)
+        await state.set_state(States.admin_rusSS_acc1)
+    elif current_state == States.admin_rusSS_acc1:
+        await callback.message.answer("Введите rusTrojan_acc1:", reply_markup=keyboard_admin_skip)
+        await state.set_state(States.admin_rusTrojan_acc1)
+    elif current_state == States.admin_rusTrojan_acc1:
         await callback.message.answer("Введите nlSS_acc2:", reply_markup=keyboard_admin_skip)
         await state.set_state(States.admin_nlSS_acc2)
 
@@ -328,6 +441,12 @@ async def process_button_admin_skip_press(callback: CallbackQuery, state: FSMCon
     elif current_state == States.admin_finTrojan_acc2:
         await callback.message.answer("Введите nlSS_acc3:", reply_markup=keyboard_admin_skip)
         await state.set_state(States.admin_nlSS_acc3)
+    elif current_state == States.admin_rusSS_acc2:
+        await callback.message.answer("Введите rusTrojan_acc2:", reply_markup=keyboard_admin_skip)
+        await state.set_state(States.admin_rusTrojan_acc2)
+    elif current_state == States.admin_rusTrojan_acc2:
+        await callback.message.answer("Введите nlSS_acc3:", reply_markup=keyboard_admin_skip)
+        await state.set_state(States.admin_nlSS_acc3)
 
     elif current_state == States.admin_nlSS_acc3:
         await callback.message.answer("Введите nlTrojan_acc3:", reply_markup=keyboard_admin_skip)
@@ -339,26 +458,38 @@ async def process_button_admin_skip_press(callback: CallbackQuery, state: FSMCon
         await callback.message.answer("Введите finTrojan_acc3:", reply_markup=keyboard_admin_skip)
         await state.set_state(States.admin_finTrojan_acc3)
     elif current_state == States.admin_finTrojan_acc3:
+        await callback.message.answer("Введите rusSS_acc3:", reply_markup=keyboard_admin_skip)
+        await state.set_state(States.admin_rusSS_acc3)
+    elif current_state == States.admin_rusSS_acc3:
+        await callback.message.answer("Введите rusTrojan_acc3:", reply_markup=keyboard_admin_skip)
+        await state.set_state(States.admin_rusTrojan_acc3)
+    elif current_state == States.admin_rusTrojan_acc3:
         data = await state.get_data()
         user_id = data.get("user_id")
         async with async_session() as session:
             user = await session.scalar(select(User).where(User.id == user_id))
         await callback.message.answer(text=f"Пользователь добавлен\n\n"
-                                           f"ID: <i>{user.id}</i>\n\n"
-                                           f"Username: <i>{user.username}</i>\n\n"
-                                           f"Telegram_id: <i>{user.tg_id}</i>\n\n"
+                                           f"{user.id}\n\n"
+                                           f"{user.username}\n\n"
+                                           f"{user.tg_id}\n\n"
                                            f"{user.nlSS_acc1}\n\n"
                                            f"{user.nlTrojan_acc1}\n\n"
                                            f"{user.finSS_acc1}\n\n"
                                            f"{user.finTrojan_acc1}\n\n"
+                                           f"{user.rusSS_acc1}\n\n"
+                                           f"{user.rusTrojan_acc1}\n\n"
                                            f"{user.nlSS_acc2}\n\n"
                                            f"{user.nlTrojan_acc2}\n\n"
                                            f"{user.finSS_acc2}\n\n"
                                            f"{user.finTrojan_acc2}\n\n"
+                                           f"{user.rusSS_acc2}\n\n"
+                                           f"{user.rusTrojan_acc2}\n\n"
                                            f"{user.nlSS_acc3}\n\n"
                                            f"{user.nlTrojan_acc3}\n\n"
                                            f"{user.finSS_acc3}\n\n"
-                                           f"{user.finTrojan_acc3}\n\n",
+                                           f"{user.finTrojan_acc3}\n\n"
+                                           f"{user.rusSS_acc3}\n\n"
+                                           f"{user.rusTrojan_acc3}\n\n",
                                       reply_markup=keyboard_admin_exit)
     await callback.answer()
 
@@ -371,21 +502,27 @@ async def process_button_admin_skip_press(callback: CallbackQuery, state: FSMCon
     async with async_session() as session:
         user = await session.scalar(select(User).where(User.id == user_id))
     await callback.message.answer(text=f"Пользователь добавлен\n\n"
-                                       f"ID: <i>{user.id}</i>\n\n"
-                                       f"Username: <i>{user.username}</i>\n\n"
-                                       f"Telegram_id: <i>{user.tg_id}</i>\n\n"
+                                       f"{user.id}\n\n"
+                                       f"{user.username}\n\n"
+                                       f"{user.tg_id}\n\n"
                                        f"{user.nlSS_acc1}\n\n"
                                        f"{user.nlTrojan_acc1}\n\n"
                                        f"{user.finSS_acc1}\n\n"
                                        f"{user.finTrojan_acc1}\n\n"
+                                       f"{user.rusSS_acc1}\n\n"
+                                       f"{user.rusTrojan_acc1}\n\n"
                                        f"{user.nlSS_acc2}\n\n"
                                        f"{user.nlTrojan_acc2}\n\n"
                                        f"{user.finSS_acc2}\n\n"
                                        f"{user.finTrojan_acc2}\n\n"
+                                       f"{user.rusSS_acc2}\n\n"
+                                       f"{user.rusTrojan_acc2}\n\n"
                                        f"{user.nlSS_acc3}\n\n"
                                        f"{user.nlTrojan_acc3}\n\n"
                                        f"{user.finSS_acc3}\n\n"
-                                       f"{user.finTrojan_acc3}\n\n",
+                                       f"{user.finTrojan_acc3}\n\n"
+                                       f"{user.rusSS_acc3}\n\n"
+                                       f"{user.rusTrojan_acc3}\n\n",
                                   reply_markup=keyboard_admin_exit)
     await callback.answer()
 

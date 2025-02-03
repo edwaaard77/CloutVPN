@@ -57,20 +57,26 @@ async def logging_in(message: types.Message, state: FSMContext):
                 User.nlTrojan_acc1 == key,
                 User.finSS_acc1 == key,
                 User.finTrojan_acc1 == key,
+                User.rusSS_acc1 == key,
+                User.rusTrojan_acc1,
                 User.nlSS_acc2 == key,
                 User.nlTrojan_acc2 == key,
                 User.finSS_acc2 == key,
                 User.finTrojan_acc2 == key,
+                User.rusSS_acc2,
+                User.rusTrojan_acc2,
                 User.nlSS_acc3 == key,
                 User.nlTrojan_acc3 == key,
                 User.finSS_acc3 == key,
-                User.finTrojan_acc3 == key
+                User.finTrojan_acc3 == key,
+                User.rusSS_acc3 == key,
+                User.rusTrojan_acc3
             )
         ))
         if not user:
             await message.answer(text=f"Похоже вы до сих пор не приобрели подписку, либо я вас ещё не успел добавить в "
                                       f"систему...🧐\n\n"
-                                      f"Обратитесь за помощью к @clout_vpn docker ✍️")
+                                      f"Обратитесь за помощью к @clout_vpn ✍️")
         else:
             user.tg_id = tg_id
             await session.commit()
@@ -95,6 +101,8 @@ async def process_button_keys_press(callback: CallbackQuery):
                          f"🇳🇱 Нидерланды (Trojan)\n\n🔑 <code>{user.nlTrojan_acc1}</code>\n\n"
                          f"🇫🇮 Финляндия (Shadowsocks)\n\n🔑 <code>{user.finSS_acc1}</code>\n\n"
                          f"🇫🇮 Финляндия (Trojan)\n\n🔑 <code>{user.finTrojan_acc1}</code>\n\n"
+                         f"🇷🇺 Россия (Shadowsocks)\n\n🔑 <code>{user.rusSS_acc1}</code>\n\n"
+                         f"🇷🇺 Россия (Trojan)\n\n🔑 <code>{user.rusTrojan_acc1}</code>\n\n"
                          f"* чтобы скопировать, просто нажмите на конкретный ключ.",
                     reply_markup=keyboard_back
                 )

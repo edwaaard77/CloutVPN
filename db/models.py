@@ -22,14 +22,20 @@ class User(Base):
     nlTrojan_acc1: Mapped[str | None] = mapped_column(String)
     finSS_acc1: Mapped[str | None] = mapped_column(String)
     finTrojan_acc1: Mapped[str | None] = mapped_column(String)
+    rusSS_acc1: Mapped[str | None] = mapped_column(String)
+    rusTrojan_acc1: Mapped[str | None] = mapped_column(String)
     nlSS_acc2: Mapped[str | None] = mapped_column(String)
     nlTrojan_acc2: Mapped[str | None] = mapped_column(String)
     finSS_acc2: Mapped[str | None] = mapped_column(String)
     finTrojan_acc2: Mapped[str | None] = mapped_column(String)
+    rusSS_acc2: Mapped[str | None] = mapped_column(String)
+    rusTrojan_acc2: Mapped[str | None] = mapped_column(String)
     nlSS_acc3: Mapped[str | None] = mapped_column(String)
     nlTrojan_acc3: Mapped[str | None] = mapped_column(String)
     finSS_acc3: Mapped[str | None] = mapped_column(String)
     finTrojan_acc3: Mapped[str | None] = mapped_column(String)
+    rusSS_acc3: Mapped[str | None] = mapped_column(String)
+    rusTrojan_acc3: Mapped[str | None] = mapped_column(String)
 
 
 async def async_main():
