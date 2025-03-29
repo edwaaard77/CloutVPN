@@ -39,7 +39,7 @@ async def handle_start(message: types.Message, state: FSMContext):
                                       f"либо не подключили подписку CloutVPN...\n\n"
                                       f"Для авторизации пришлите один из имеющихся у вас ключей 🔑\n\n"
                                       f"Для приобретения подписки или при возникновении вопросов "
-                                      f"обращайтесь к @clout_vpn ✍️")
+                                      f"обращайтесь к @eduard_glazyrin ✍️")
             await state.set_state(States.log_in)
         else:
             await message.answer(text=f"Здравствуйте! 👋\n\nТеперь CloutVPN всегда под рукой 🫂",
@@ -76,7 +76,7 @@ async def logging_in(message: types.Message, state: FSMContext):
         if not user:
             await message.answer(text=f"Похоже вы до сих пор не приобрели подписку, либо я вас ещё не успел добавить в "
                                       f"систему...🧐\n\n"
-                                      f"Обратитесь за помощью к @clout_vpn ✍️")
+                                      f"Обратитесь за помощью к @eduard_glazyrin ✍️")
         else:
             user.tg_id = tg_id
             await session.commit()
@@ -291,7 +291,7 @@ async def process_button_others_press(callback: CallbackQuery):
     print(last_seen_time)
     await rq.set_time(callback.from_user.id, last_seen_time)
     await callback.message.answer(
-        text=f"Для настройки VPN на роутере или телевизоре, напишите, пожалуйста, @clout_vpn ✍️",
+        text=f"Для настройки VPN на роутере или телевизоре, напишите, пожалуйста, @eduard_glazyrin ✍️",
         reply_markup=keyboard_devices_back
     )
     await callback.answer()

@@ -33,19 +33,19 @@ async def notification_sender(callback: CallbackQuery, state: FSMContext):
 
 @router.message(States.admin_notification)
 async def notification_sender(message: types.Message):
-    await message.send_copy(chat_id=290560857)
-    # async with async_session() as session:
-    #     async with session.begin():
-    #         # Получаем все tg_id из таблицы users
-    #         result = await session.execute(select(User.tg_id))
-    #         user_ids = result.scalars().all()
-    #
-    #         # Отправляем сообщение каждому пользователю
-    #         for tg_id in user_ids:
-    #             try:
-    #                 await message.send_copy(chat_id=tg_id)
-    #             except Exception as e:
-    #                 print(f"Не удалось отправить сообщение пользователю с id {tg_id}: {e}")
+    # await message.send_copy(chat_id=290560857)
+    async with async_session() as session:
+        async with session.begin():
+            # Получаем все tg_id из таблицы users
+            result = await session.execute(select(User.tg_id))
+            user_ids = result.scalars().all()
+
+            # Отправляем сообщение каждому пользователю
+            for tg_id in user_ids:
+                try:
+                    await message.send_copy(chat_id=tg_id)
+                except Exception as e:
+                    print(f"Не удалось отправить сообщение пользователю с id {tg_id}: {e}")
     await message.answer(text="Ваше послание уже у получателей!",
                          reply_markup=keyboard_admin_exit)
 
@@ -550,25 +550,6 @@ async def process_button_admin_skip_press(callback: CallbackQuery, state: FSMCon
                                        f"{user.rusTrojan_acc3}\n\n",
                                   reply_markup=keyboard_admin_exit)
     await callback.answer()
-
-
-@router.message(States.admin_notification)
-async def announcement_sender(message: types.Message):
-    # await message.send_copy(chat_id=290560857)
-    async with async_session() as session:
-        async with session.begin():
-            # Получаем все tg_id из таблицы users
-            result = await session.execute(select(User.tg_id))
-            user_ids = result.scalars().all()
-
-            # Отправляем сообщение каждому пользователю
-            for tg_id in user_ids:
-                try:
-                    await message.send_copy(chat_id=tg_id)
-                except Exception as e:
-                    print(f"Не удалось отправить сообщение пользователю с id {tg_id}: {e}")
-    await message.answer(text="Ваше послание уже у получателей!",
-                         reply_markup=keyboard_admin_panel)
 
 
 @router.callback_query(F.data == "button_admin_exit_pressed")
