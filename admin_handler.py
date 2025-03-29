@@ -25,6 +25,25 @@ async def secret_admin_message(message: types.Message):
     )
 
 
+@router.callback_query(F.data == "button_admin_notification_pressed")
+async def notification_sender(message: types.Message):
+    await message.send_copy(chat_id=290560857)
+    # async with async_session() as session:
+    #     async with session.begin():
+    #         # Получаем все tg_id из таблицы users
+    #         result = await session.execute(select(User.tg_id))
+    #         user_ids = result.scalars().all()
+    #
+    #         # Отправляем сообщение каждому пользователю
+    #         for tg_id in user_ids:
+    #             try:
+    #                 await message.send_copy(chat_id=tg_id)
+    #             except Exception as e:
+    #                 print(f"Не удалось отправить сообщение пользователю с id {tg_id}: {e}")
+    await message.answer(text="Ваше послание уже у получателей!",
+                         reply_markup=keyboard_admin_exit)
+
+
 @router.callback_query(F.data == "button_admin_add_pressed")
 async def process_button_admin_add_press(callback: CallbackQuery, state: FSMContext):
     await state.set_state(States.admin_username)
