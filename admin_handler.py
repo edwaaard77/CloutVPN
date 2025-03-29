@@ -26,6 +26,12 @@ async def secret_admin_message(message: types.Message):
 
 
 @router.callback_query(F.data == "button_admin_notification_pressed")
+async def notification_sender(callback: CallbackQuery, state: FSMContext):
+    await state.set_state(States.admin_notification)
+    await callback.message.edit_text("Что желаете отправить?")
+
+
+@router.message(States.admin_notification)
 async def notification_sender(message: types.Message):
     await message.send_copy(chat_id=290560857)
     # async with async_session() as session:
