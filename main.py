@@ -32,6 +32,7 @@ dp.include_routers(admin_router)
 
 @dp.message(CommandStart())
 async def handle_start(message: types.Message, state: FSMContext):
+    await state.clear()
     async with async_session() as session:
         user = await session.scalar(select(User).where(User.tg_id == message.from_user.id))
         if not user:

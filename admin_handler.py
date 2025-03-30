@@ -28,7 +28,9 @@ async def secret_admin_message(message: types.Message):
 @router.callback_query(F.data == "button_admin_notification_pressed")
 async def notification_sender(callback: CallbackQuery, state: FSMContext):
     await state.set_state(States.admin_notification)
-    await callback.message.edit_text("Что желаете отправить?")
+    await callback.message.edit_text(
+        text="Что желаете отправить?",
+        reply_markup=keyboard_admin_exit)
 
 
 @router.message(States.admin_notification)
